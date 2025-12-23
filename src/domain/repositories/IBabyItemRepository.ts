@@ -1,6 +1,6 @@
 import { BabyItem } from "../entities/BabyItem";
 
-export interface IBabyItem{
+export interface IBabyItemRepository{
     //MVP1 = CRUD inicial
     saveItem(item: BabyItem): Promise<boolean>;
     getAllItems(): Promise<BabyItem[]>;
