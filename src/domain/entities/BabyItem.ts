@@ -2,6 +2,8 @@ export class BabyItem {
     constructor(
         private name: string,
         private category: string,
+        private quantity: number,
+        private unit: string,
         private priority: number,
         private estimated_price: number,
         private is_purchased: boolean,

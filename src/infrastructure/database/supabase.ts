@@ -1,1 +1,0 @@
-//Base de datos remota - dependencia externa

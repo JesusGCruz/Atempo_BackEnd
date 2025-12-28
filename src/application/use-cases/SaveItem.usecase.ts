@@ -7,6 +7,8 @@ export class SaveItem{
     async execute(
         name: string,
         category: string,
+        quantity: number,
+        unit: string,
         priority: number,
         estimated_price: number,
         notes: string
@@ -14,6 +16,8 @@ export class SaveItem{
         let newBabyItem = new BabyItem(
             name,
             category,
+            quantity,
+            unit,
             priority,
             estimated_price,
             false,
