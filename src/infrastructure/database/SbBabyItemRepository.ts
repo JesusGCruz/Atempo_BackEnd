@@ -2,6 +2,8 @@ import { BabyItem } from "../../domain/entities/BabyItem";
 import { IBabyItemRepository } from "../../domain/repositories/IBabyItemRepository";
 import { supabase } from '../config/supabase';
 
+// Agregar las politicas de escritura a las tablas (CREATE POLICY)
+
 export class SbBabyItemRepository implements IBabyItemRepository {
     saveItem(item: BabyItem): Promise<boolean> {
         throw new Error("Method not implemented.");
@@ -12,7 +14,7 @@ export class SbBabyItemRepository implements IBabyItemRepository {
             .select('*');
 
         if (error) throw new Error(`Error al obtener ${error.message}.`);
-
+        
         return data.map(row => new BabyItem(
             row.name,
             row.category,
