@@ -1,8 +1,11 @@
 import { BabyItem } from "../../domain/entities/BabyItem";
 import { IBabyItemRepository } from "../../domain/repositories/IBabyItemRepository";
 
-export class SaveItem{
-    constructor(private itemRepository: IBabyItemRepository){}
+export class InsertItem{
+    private itemRepository: IBabyItemRepository;
+    constructor(itemRepository: IBabyItemRepository){
+        this.itemRepository = itemRepository;
+    }
 
     async execute(
         name: string,

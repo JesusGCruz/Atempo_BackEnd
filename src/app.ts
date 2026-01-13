@@ -23,7 +23,7 @@ app.use('/items', babyItemRoutes);
 // Ruta default
 app.use((req: Request, res: Response) => {
   res.status(404).json({
-    error: 'Ruta no encontrada xd'
+    error: 'Ruta no encontrada'
   });
 });
 

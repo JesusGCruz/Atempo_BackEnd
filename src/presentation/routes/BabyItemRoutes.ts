@@ -5,10 +5,12 @@ import { SbBabyItemRepository } from '../../infrastructure/database/SbBabyItemRe
 const router = Router();
 
 // Crear instancias
-const productRepository = new SbBabyItemRepository();
-const productController = new BabyItemController(productRepository);
+const itemRepository = new SbBabyItemRepository();
+const itemController = new BabyItemController(itemRepository);
 
-// Rutas
-router.get('/getAll', productController.getAllProducts);
+// Rutas de los items
+router.get('/getAll', itemController.getAllItems);
+
+router.post('', itemController.insertItem);
 
 export default router;

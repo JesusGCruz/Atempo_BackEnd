@@ -1,15 +1,15 @@
 export class BabyItem {
     private name: string;
-        private category: string;
-        private quantity: number;
-        private unit: string;
-        private priority: number;
-        private estimated_price: number;
-        private is_purchased: boolean;
-        private notes: string;
-        private readonly create_at: string;
-        private item_id?: number;
-        private purchased_date?: string;
+    private category: string;
+    private quantity: number;
+    private unit: string;
+    private priority: number;
+    private estimated_price: number;
+    private is_purchased: boolean;
+    private notes: string;
+    private readonly create_at: string;
+    private item_id?: number;
+    private purchased_date?: string;
     constructor(
         name: string,
         category: string,
@@ -36,31 +36,37 @@ export class BabyItem {
         this.purchased_date = purchased_date;
     }
 
-    getItemId(): number | undefined{
+    getItemId(): number | undefined {
         return this.item_id;
     }
-    getName(): string{
+    getName(): string {
         return this.name;
     }
-    getCategory(): string{
+    getCategory(): string {
         return this.category;
     }
-    getPriority(): number{
+    getQuantity(): number {
+        return this.quantity;
+    }
+    getUnit(): string {
+        return this.unit;
+    }
+    getPriority(): number {
         return this.priority;
     }
-    getEstimatedPrice(): number{
+    getEstimatedPrice(): number {
         return this.estimated_price;
     }
-    IsPurchased(): boolean{
+    IsPurchased(): boolean {
         return this.is_purchased;
     }
-    getPurchasedDate(): string | undefined{
+    getPurchasedDate(): string | undefined {
         return this.purchased_date;
     }
-    getNotes(): string{
+    getNotes(): string {
         return this.notes;
     }
-    getCreateAt(): string{
+    getCreateAt(): string {
         return this.create_at;
     }
 }
