@@ -8,15 +8,15 @@ export class SbBabyItemRepository implements IBabyItemRepository {
     async saveItem(item: BabyItem): Promise<boolean> {
         const { data, error } = await supabase.rpc('insert_item', {
             p_name: item.getName(),
-            p_category_text:item.getCategory(),
-            p_priority_val:item.getPriority(),
-            p_estimated_price:item.getEstimatedPrice(),
-            p_notes:item.getNotes(),
-            p_quantity:item.getQuantity(),
-            p_unit_text:item.getUnit()
+            p_category_text: item.getCategory(),
+            p_priority_val: item.getPriority(),
+            p_estimated_price: item.getEstimatedPrice(),
+            p_notes: item.getNotes(),
+            p_quantity: item.getQuantity(),
+            p_unit_text: item.getUnit()
         });
         if (error) throw new Error(`Error al insertar: ${error.message}.`);
-        
+
         return data;
     }
 
@@ -41,12 +41,22 @@ export class SbBabyItemRepository implements IBabyItemRepository {
             row.purchase_date
         ));
     }
-    editItem(): Promise<boolean> {
+
+    async editItemById(): Promise<boolean> {
         throw new Error("Method not implemented.");
     }
-    deleteItem(): Promise<boolean> {
-        throw new Error("Method not implemented.");
+
+    async deleteItemById(item_id: number): Promise<boolean> {
+        const { data, error } = await supabase
+            .from('baby_items')
+            .delete()
+            .eq('item_id', item_id)
+            .select();
+        if (error) throw new Error(`Error al obtener: ${error.message}.`);
+        if(data.length > 0) return true;
+        return false;
     }
+
     findByCategory(category: string): Promise<BabyItem[] | null> {
         throw new Error("Method not implemented.");
     }

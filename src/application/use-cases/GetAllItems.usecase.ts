@@ -10,6 +10,8 @@ export class GetAllItems {
     async execute(): Promise<BabyItem[]> {
         const items = await this.itemRepository.getAllItems();
         // Ordenado por prioridad
-        return items.sort((a, b) => a.getPriority() - b.getPriority());
+        //return items.sort((a, b) => a.getPriority() - b.getPriority());
+        // TEMPORAL: Regresamos los datos sin ordenar (orden por id)
+        return items; 
     }
 }

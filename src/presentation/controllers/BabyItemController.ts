@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { GetAllItems } from '../../application/use-cases/GetAllItems.usecase'
 import { IBabyItemRepository } from "../../domain/repositories/IBabyItemRepository";
 import { InsertItem } from '../../application/use-cases/InsertItem.usecase';
+import { DeleteItemById } from '../../application/use-cases/DeleteItemById.usecase';
 
 export class BabyItemController {
     private babyItemRepository: IBabyItemRepository;
@@ -48,4 +49,21 @@ export class BabyItemController {
             });
         }
     };
+
+    updateItemById = async (req: Request, res: Response): Promise<void> => { }
+    deleteItemById = async (req: Request, res: Response): Promise<void> => {
+        try {
+            const deleteItemByIdUseCase = new DeleteItemById(this.babyItemRepository);
+            const deleted = await deleteItemByIdUseCase.execute(+req.params.item_id);
+            res.json({
+                data: deleted,
+                status: "OK"
+            });
+        } catch (error) {
+            res.status(500).json({
+                error: error instanceof Error ? error.message : 'Error desconocido',
+                status: "SERVER_ERROR"
+            });
+        }
+    }
 }
