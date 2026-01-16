@@ -4,7 +4,7 @@ export interface IBabyItemRepository{
     //MVP1 = CRUD inicial
     saveItem(item: BabyItem): Promise<boolean>;
     getAllItems(): Promise<BabyItem[]>;
-    editItemById(item_id: number): Promise<boolean>;
+    updateItemById(item: BabyItem): Promise<boolean>;
     deleteItemById(item_id: number): Promise<boolean>;
 
     //Encontrar todos los productos que pertenezcan a una categoria

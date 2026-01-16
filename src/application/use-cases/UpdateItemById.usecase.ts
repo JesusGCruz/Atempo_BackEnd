@@ -1,12 +1,12 @@
 import { BabyItem } from "../../domain/entities/BabyItem";
 import { IBabyItemRepository } from "../../domain/repositories/IBabyItemRepository";
 
-export class InsertItem{
-    private itemRepository: IBabyItemRepository;
-    constructor(itemRepository: IBabyItemRepository){
-        this.itemRepository = itemRepository;
+export class UpdateItemById{
+    private iBabyItemRepository: IBabyItemRepository;
+    constructor(iBabyItemRepository: IBabyItemRepository){
+        this.iBabyItemRepository = iBabyItemRepository;
     }
-
+    
     async execute(
         name: string,
         category: string,
@@ -14,20 +14,21 @@ export class InsertItem{
         unit: string,
         priority: number,
         estimated_price: number,
-        notes: string
+        notes: string,
+        item_id: number
     ){
-        let newBabyItem = new BabyItem(
+        const item = new BabyItem(
             name,
             category.toUpperCase(),
             quantity,
             unit,
             priority,
             estimated_price,
-            false,
+            false, // Datos de relleno
             notes,
-            new Date().toString()
+            new Date().toString(), // No son enviados a la db
+            item_id
         );
-        return await this.itemRepository.saveItem(newBabyItem);
+        return await this.iBabyItemRepository.updateItemById(item);
     }
-    
 }

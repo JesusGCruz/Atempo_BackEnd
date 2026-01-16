@@ -4,16 +4,20 @@ import { SbBabyItemRepository } from '../../infrastructure/database/SbBabyItemRe
 
 const router = Router();
 
-// Crear instancias
-const itemRepository = new SbBabyItemRepository();
+// Crear instancias para guardar datos
+// Se puede reemplazar (SbBaby...) por otra interfaz y funcionara igual
+const itemRepository = new SbBabyItemRepository(); 
+//El controlador solo invoca los metodos de la interfaz, no importa si es en db o local
 const itemController = new BabyItemController(itemRepository);
 
 // Rutas de los items
-// Obtener todos los items
-router.get('/getAll', itemController.getAllItems);
-// Insertar un nuevo item
+// Insertar un nuevo item C
 router.post('', itemController.insertItem);
-// Eliminar un item
+// Obtener todos los items R
+router.get('', itemController.getAllItems);
+// Actualizar un item U
+router.put('', itemController.updateItemById);
+// Eliminar un item D
 router.delete('/:item_id', itemController.deleteItemById);
 
 export default router;
